@@ -1,17 +1,22 @@
 {
   "version": 2,
-  "routes": [
+  "name": "docmind-ai",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://REPLACE_WITH_YOUR_RAILWAY_URL/api/$1" }
+  ],
+  "headers": [
     {
-      "src": "/ask/(.*)",
-      "dest": "https://docmind-ai-production.up.railway.app/ask/$1"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
     }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
