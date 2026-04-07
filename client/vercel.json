@@ -4,6 +4,6 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "docmind-ai-production.up.railway.app" }
+    { "source": "/api/:path*", "destination": "https://docmind-ai-production.up.railway.app/api/:path*" }
   ]
 }
